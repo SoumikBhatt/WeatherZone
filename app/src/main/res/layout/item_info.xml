@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_city_name"
         app:layout_constraintStart_toStartOf="@+id/tv_city_name"
         app:layout_constraintTop_toBottomOf="@id/tv_city_name"
-        tools:text="30" />
+        android:text="30" />
 
     <TextView
         android:id="@+id/tv_temp_degree"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Sylhet" />
+        android:text="Sylhet" />
 
     <TextView
         android:id="@+id/tv_weather_condition"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_temp"
         app:layout_constraintStart_toStartOf="@+id/tv_temp"
         app:layout_constraintTop_toBottomOf="@+id/tv_temp"
-        tools:text="Cloudy" />
+        android:text="Cloudy" />
 
     <include
         android:id="@+id/include2"

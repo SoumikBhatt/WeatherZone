@@ -14,11 +14,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <include
         android:id="@+id/rv_info_weather"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_info"
+        layout="@layout/item_info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

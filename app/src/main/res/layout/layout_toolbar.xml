@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
-    tools:showIn="@layout/activity_main"
-    tools:context=".activities.MainActivity"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    tools:showIn="@layout/activity_search"
     android:layout_height="wrap_content">
 
-
     <RelativeLayout
-        android:id="@+id/rl_top_home"
+        android:id="@+id/rl_tool_bar"
         android:layout_width="0dp"
         android:minHeight="?attr/actionBarSize"
         android:layout_height="wrap_content"
@@ -19,19 +17,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_add"
-            android:src="@drawable/ic_baseline_add_24"
+            android:id="@+id/iv_back"
+            android:src="@drawable/ic_arrow_back"
             android:layout_width="32dp"
             android:layout_centerVertical="true"
-            android:onClick="onAddButtonClicked"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:layout_height="32dp"
-            android:contentDescription="@string/desc_add_city" />
+            android:contentDescription="@string/desc_back" />
 
         <TextView
-            android:id="@+id/tv_city_name"
+            android:id="@+id/tv_tool_title"
             android:text="@string/app_name"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_width="match_parent"
@@ -39,19 +36,8 @@
             android:fontFamily="@font/pt_bold"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/iv_more"
-            android:layout_toEndOf="@id/iv_add"/>
-
-        <ImageView
-            android:id="@+id/iv_more"
-            android:src="@drawable/ic_more"
-            android:layout_width="32dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:layout_height="32dp"
-            android:contentDescription="@string/desc_more" />
+            android:layout_centerVertical="true"/>
 
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

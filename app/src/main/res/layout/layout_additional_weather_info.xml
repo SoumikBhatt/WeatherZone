@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="@id/iv_sunrise"
                 app:layout_constraintStart_toStartOf="@id/iv_sunrise"
                 app:layout_constraintTop_toBottomOf="@id/iv_sunrise"
-                tools:text="05:42 AM" />
+                android:text="05:42 AM" />
 
             <TextView
                 android:id="@+id/tv_real_feel_label"
@@ -72,7 +72,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_real_feel_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_real_feel_label"
-                tools:text="@string/degree_celsius_symbol_with_temp" />
+                android:text="@string/degree_celsius_symbol_with_temp" />
 
             <TextView
                 android:id="@+id/tv_cloudiness_label"
@@ -99,7 +99,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_cloudiness_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_cloudiness_label"
-                tools:text="42%" />
+                android:text="42%" />
 
             <TextView
                 android:id="@+id/tv_wind_speed_label"
@@ -127,7 +127,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_wind_speed_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_wind_speed_label"
-                tools:text="11.1km/h" />
+                android:text="11.1km/h" />
 
         </LinearLayout>
 
@@ -166,7 +166,7 @@
                 app:layout_constraintEnd_toEndOf="@id/iv_sunset"
                 app:layout_constraintStart_toStartOf="@id/iv_sunset"
                 app:layout_constraintTop_toBottomOf="@id/iv_sunset"
-                tools:text="06:10 PM" />
+                android:text="06:10 PM" />
 
 
             <TextView
@@ -194,7 +194,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_humidity_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_humidity_label"
-                tools:text="65%" />
+                android:text="65%" />
 
 
             <TextView
@@ -223,7 +223,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_pressure_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_pressure_label"
-                tools:text="1007hPa" />
+                android:text="1007hPa" />
 
 
             <TextView
@@ -253,7 +253,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_visibility_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_visibility_label"
-                tools:text="8.578KM" />
+                android:text="8.578KM" />
 
         </LinearLayout>
 
