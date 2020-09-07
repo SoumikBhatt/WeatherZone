@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     android:layout_width="match_parent"
-    tools:showIn="@layout/activity_search"
+    tools:context=".activities.SavedCityActivity"
+    tools:showIn="@layout/activity_saved_city"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -22,6 +23,7 @@
             android:layout_width="32dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
+            android:onClick="onBackButtonClicked"
             android:layout_height="32dp"
             android:contentDescription="@string/desc_back" />
 

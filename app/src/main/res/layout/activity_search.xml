@@ -7,59 +7,77 @@
     android:background="@android:color/white"
     tools:context=".activities.SearchActivity">
 
-    <include
-        android:id="@+id/include4"
-        layout="@layout/layout_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
+    <ProgressBar
+        android:id="@+id/pb_search"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_searched_result"
+        app:layout_constraintEnd_toEndOf="@+id/rv_searched_result"
+        app:layout_constraintStart_toStartOf="@+id/rv_searched_result"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_city_search"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:paddingHorizontal="10dp"
-        android:drawablePadding="10dp"
-        android:onClick="onSearchTextClicked"
-        android:hint="@string/label_search_hint"
-        android:gravity="center_vertical"
-        android:theme="@style/SearchViewText"
-        android:background="@drawable/bg_search_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include4"
-        app:drawableStartCompat="@drawable/ic_search" />
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_city_search"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <include layout="@layout/item_saved_city"/>-->
-<!--        <include layout="@layout/item_saved_city"/>-->
-<!--        <include layout="@layout/item_saved_city"/>-->
-<!--        <include layout="@layout/item_saved_city"/>-->
-<!--        <include layout="@layout/item_saved_city"/>-->
-
-<!--    </LinearLayout>-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_saved_city"
-        android:layout_width="0dp"
-        android:layout_marginTop="8dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_saved_city"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_city_search" />
+        app:layout_constraintTop_toBottomOf="@+id/sv_search_city"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
 
+        <include layout="@layout/item_cities"/>
+        <include layout="@layout/item_cities"/>
+        <include layout="@layout/item_cities"/>
+        <include layout="@layout/item_cities"/>
+        <include layout="@layout/item_cities"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_searched_result"
+        android:layout_width="0dp"
+        tools:listitem="@layout/item_cities"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_search_city" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/pt_regular"
+        android:onClick="onCancelButtonClicked"
+        android:text="@android:string/cancel"
+        android:textColor="@color/sky_blue"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sv_search_city"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sv_search_city" />
+
+    <SearchView
+        android:id="@+id/sv_search_city"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_search_view"
+        android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="@string/label_search_hint"
+        android:theme="@style/SearchViewText"
+        android:transitionName="@string/label_search_hint"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </SearchView>
 </androidx.constraintlayout.widget.ConstraintLayout>

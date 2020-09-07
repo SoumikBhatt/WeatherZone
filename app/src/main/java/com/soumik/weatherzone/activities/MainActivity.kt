@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onAddButtonClicked(view: View) {
-        startActivity(Intent(this@MainActivity,SearchActivity::class.java))
+        startActivity(Intent(this@MainActivity,SavedCityActivity::class.java))
     }
 }
