@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SearchActivity"></activity>
+        <activity android:name=".activities.ForecastActivity"></activity>
+        <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.SavedCityActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>

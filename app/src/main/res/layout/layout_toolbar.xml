@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     android:layout_width="match_parent"
-    tools:context=".activities.SavedCityActivity"
     tools:showIn="@layout/activity_saved_city"
     android:layout_height="wrap_content">
 

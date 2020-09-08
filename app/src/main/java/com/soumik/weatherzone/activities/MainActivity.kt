@@ -15,4 +15,8 @@ class MainActivity : AppCompatActivity() {
     fun onAddButtonClicked(view: View) {
         startActivity(Intent(this@MainActivity,SavedCityActivity::class.java))
     }
+
+    fun onForecastButtonClicked(view: View) {
+        startActivity(Intent(this@MainActivity,ForecastActivity::class.java))
+    }
 }

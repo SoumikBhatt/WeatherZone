@@ -5,7 +5,8 @@
     <string name="desc_back">backStack</string>
     <string name="degree_celsius_symbol">°C</string>
     <string name="degree_celsius_symbol_with_temp">32.9°C</string>
-    <string name="degree_celsius_symbol_with_temp2">32°</string>
+    <string name="degree_celsius_symbol_with_temp2">32°C</string>
+    <string name="degree_celsius_symbol_with_temp3">Evening\n32°C</string>
     <string name="desc_sunrise">icon of sunrise</string>
     <string name="desc_sunset">icon of sunset</string>
     <string name="label_real_feel">Real Feel</string>

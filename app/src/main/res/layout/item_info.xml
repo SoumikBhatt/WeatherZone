@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:background="@color/colorPrimary"
+    tools:context=".activities.MainActivity"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
@@ -75,6 +76,7 @@
     <Button
         android:id="@+id/btn_forecast"
         android:layout_width="0dp"
+        android:onClick="onForecastButtonClicked"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
