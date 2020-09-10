@@ -34,6 +34,3 @@ fun lightStatusBar(activity:Activity,value:Boolean){
 fun showToast(context:Context,message:String,length:Int) {
     Toast.makeText(context,message,length).show()
 }
-
-const val LOCATION_REQUEST = 100
-const val GPS_REQUEST = 101
