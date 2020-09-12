@@ -1,12 +1,10 @@
-package com.soumik.weatherzone.activities
+package com.soumik.weatherzone.ui.main.activities
 
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.Window
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.utils.debug
@@ -35,21 +33,21 @@ class SplashScreenActivity : AppCompatActivity() {
 
         motion_layout.setTransitionListener(object : MotionLayout.TransitionListener{
             override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-                debug(TAG,"Start")
+//                debug(TAG,"Start")
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-                debug(TAG,"Change")
+//                debug(TAG,"Change")
             }
 
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                debug(TAG,"Complete")
+//                debug(TAG,"Complete")
                 startActivity(Intent(this@SplashScreenActivity,MainActivity::class.java))
                 finish()
             }
 
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-                debug(TAG,"Triggered")
+//                debug(TAG,"Triggered")
             }
         })
 

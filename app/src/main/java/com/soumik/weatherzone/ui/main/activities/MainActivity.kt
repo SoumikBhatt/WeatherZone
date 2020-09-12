@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.activities
+package com.soumik.weatherzone.ui.main.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -11,17 +11,20 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.soumik.weatherzone.R
-import com.soumik.weatherzone.models.repository.LocationProvider
-import com.soumik.weatherzone.utils.GPS_REQUEST
-import com.soumik.weatherzone.utils.GpsUtils
-import com.soumik.weatherzone.utils.LOCATION_REQUEST
-import com.soumik.weatherzone.utils.showToast
+import com.soumik.weatherzone.data.models.ResponseWeatherByLocation
+import com.soumik.weatherzone.data.repository.LocationProvider
+import com.soumik.weatherzone.data.repository.remote.WeatherRepository
+import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_info.*
+import kotlinx.android.synthetic.main.layout_additional_weather_info.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel:MyViewModel
     private lateinit var model:LocationProvider
+    private lateinit var weatherRepo:WeatherRepository
     private var isGPSEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         model = LocationProvider(this)
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        weatherRepo = WeatherRepository()
 
         //checking GPS status
         GpsUtils(this).turnGPSOn(object : GpsUtils.OnGpsListener {
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        liveDataListener()
+        setUpObservers()
     }
 
     override fun onStart() {
@@ -47,10 +51,46 @@ class MainActivity : AppCompatActivity() {
         invokeLocationAction()
     }
 
-    private fun liveDataListener() {
+    private fun setUpObservers() {
         viewModel.locationLiveData.observe(this, {
-            showToast(this,"You are at Lat:${it.latitude}...Lng:${it.longitude}",1)
+            viewModel.getWeatherByLocation(weatherRepo,it.latitude.toString(),it.longitude.toString())
         })
+
+        viewModel.weatherByLocation.observe(this,{
+            it?.let {resource ->
+                when(resource.status){
+                    Status.SUCCESS->{
+                        inc_info_weather.visibility=View.VISIBLE
+                        progressBar.visibility=View.GONE
+                        setUpUI(it.data)
+                    }
+                    Status.ERROR->{
+                        progressBar.visibility=View.GONE
+                        showToast(this@MainActivity, resource.message!!,1)
+                    }
+                    Status.LOADING->{
+                        progressBar.visibility=View.VISIBLE
+                    }
+                }
+            }
+        })
+
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setUpUI(data: ResponseWeatherByLocation?) {
+        tv_temp.text = data?.main?.temp.toString()
+        tv_city_name.text = data?.name
+        tv_weather_condition.text = data?.weather!![0].main
+        tv_sunrise_time.text = data.sys.sunrise.unixTimestampToTimeString()
+        tv_sunset_time.text = data.sys.sunset.unixTimestampToTimeString()
+        tv_real_feel_text.text = "${data.main.feelsLike}${getString(R.string.degree_celsius_symbol)}"
+        tv_cloudiness_text.text = "${data.clouds.all}%"
+        tv_wind_speed_text.text = "${data.wind.speed}km/h"
+        tv_humidity_text.text = "${data.main.humidity}%"
+        tv_pressure_text.text = "${data.main.pressure}hPa"
+        tv_visibility_text.text = "${data.visibility}KM"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -69,14 +109,21 @@ class MainActivity : AppCompatActivity() {
 
             isPermissionsGranted() -> startLocationUpdate()
 
-            shouldShowRequestPermissionRationale() -> showToast(this,"Location Permission needed",1)
+            shouldShowRequestPermissionRationale() -> requestLocationPermission()
 
-            else -> ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
-                LOCATION_REQUEST
-            )
+            else -> requestLocationPermission()
         }
+    }
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ),
+            LOCATION_REQUEST
+        )
     }
 
     private fun startLocationUpdate() {

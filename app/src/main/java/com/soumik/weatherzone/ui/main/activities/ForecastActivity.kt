@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.activities
+package com.soumik.weatherzone.ui.main.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

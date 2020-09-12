@@ -1,6 +1,6 @@
-package com.soumik.weatherzone.models.repository
+package com.soumik.weatherzone.data.repository
 
-import com.soumik.weatherzone.models.dataClasses.LocationData
+import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.utils.RequestCompleteListener
 
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/motion_layout"
     app:layoutDescription="@xml/activity_splash_screen_scene"
-    tools:context=".activities.SplashScreenActivity">
+    tools:context=".ui.main.activities.SplashScreenActivity">
 
     <View
         android:id="@+id/view_background_gray"

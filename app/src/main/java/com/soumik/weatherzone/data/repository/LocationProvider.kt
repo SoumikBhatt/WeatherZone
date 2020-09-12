@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.models.repository
+package com.soumik.weatherzone.data.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,13 +7,14 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.soumik.weatherzone.models.dataClasses.LocationData
+import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.utils.RequestCompleteListener
 
 
 /**
  * Created by Soumik Bhattacharjee on 9/11/2020.
- * soumikcse07@gmail.com,http://soumikbhatt.github.io/
+ * soumikcse07@gmail.com
+ * http://soumikbhatt.github.io/
  */
 class LocationProvider(context: Context): LocationProviderInterface {
 

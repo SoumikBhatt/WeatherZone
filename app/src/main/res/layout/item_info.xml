@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activities.MainActivity"
+    tools:context=".ui.main.activities.MainActivity"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_city_name"
         app:layout_constraintStart_toStartOf="@+id/tv_city_name"
         app:layout_constraintTop_toBottomOf="@id/tv_city_name"
-        android:text="30" />
+        tools:text="30" />
 
     <TextView
         android:id="@+id/tv_temp_degree"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Sylhet" />
+        tools:text="Sylhet" />
 
     <TextView
         android:id="@+id/tv_weather_condition"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_temp"
         app:layout_constraintStart_toStartOf="@+id/tv_temp"
         app:layout_constraintTop_toBottomOf="@+id/tv_temp"
-        android:text="Cloudy" />
+        tools:text="Cloudy" />
 
     <include
         android:id="@+id/include2"

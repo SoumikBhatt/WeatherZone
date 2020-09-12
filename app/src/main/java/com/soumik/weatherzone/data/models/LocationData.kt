@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.models.dataClasses
+package com.soumik.weatherzone.data.models
 
 
 /**

@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.activities
+package com.soumik.weatherzone.ui.main.activities
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.util.Pair
 import android.view.View
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.utils.lightStatusBar
-import kotlinx.android.synthetic.main.activity_saved_city.*
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {

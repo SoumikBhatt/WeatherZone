@@ -1,6 +1,6 @@
 package com.soumik.weatherzone.network
 
-import com.soumik.weatherzone.WeatherZone
+import com.soumik.weatherzone.ui.base.WeatherZone
 import com.soumik.weatherzone.utils.APP_ID
 import com.soumik.weatherzone.utils.PrefManager
 import okhttp3.Interceptor
@@ -8,7 +8,8 @@ import okhttp3.Response
 
 class QueryParameterAddInterceptor:Interceptor {
 
-    private val prefManager = PrefManager(WeatherZone.context)
+    val context = WeatherZone.context
+    private val prefManager = PrefManager(context)
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val url = chain.request().url().newBuilder()

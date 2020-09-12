@@ -38,14 +38,13 @@
                 android:id="@+id/tv_sunrise_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_sunrise"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/light_grey"
                 app:layout_constraintEnd_toEndOf="@id/iv_sunrise"
                 app:layout_constraintStart_toStartOf="@id/iv_sunrise"
                 app:layout_constraintTop_toBottomOf="@id/iv_sunrise"
-                android:text="05:42 AM" />
+                tools:text="05:42 AM" />
 
             <TextView
                 android:id="@+id/tv_real_feel_label"
@@ -78,7 +77,6 @@
                 android:id="@+id/tv_cloudiness_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_real_feel_text"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/pt_regular"
@@ -99,13 +97,12 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_cloudiness_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_cloudiness_label"
-                android:text="42%" />
+                tools:text="42%" />
 
             <TextView
                 android:id="@+id/tv_wind_speed_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_cloudiness_text"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/pt_regular"
@@ -127,7 +124,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_wind_speed_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_wind_speed_label"
-                android:text="11.1km/h" />
+                tools:text="11.1km/h" />
 
         </LinearLayout>
 
@@ -146,7 +143,6 @@
                 android:id="@+id/iv_sunset"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:layout_alignParentEnd="true"
                 android:contentDescription="@string/desc_sunset"
                 android:fontFamily="@font/pt_regular"
                 android:src="@drawable/ic_sunset"
@@ -157,8 +153,6 @@
                 android:id="@+id/tv_sunset_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_sunset"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/pt_regular"
@@ -166,14 +160,13 @@
                 app:layout_constraintEnd_toEndOf="@id/iv_sunset"
                 app:layout_constraintStart_toStartOf="@id/iv_sunset"
                 app:layout_constraintTop_toBottomOf="@id/iv_sunset"
-                android:text="06:10 PM" />
+                tools:text="06:10 PM" />
 
 
             <TextView
                 android:id="@+id/tv_humidity_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_sunset_time"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/pt_regular"
@@ -194,14 +187,13 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_humidity_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_humidity_label"
-                android:text="65%" />
+                tools:text="65%" />
 
 
             <TextView
                 android:id="@+id/tv_pressure_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_humidity_text"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/pt_regular"
@@ -223,14 +215,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_pressure_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_pressure_label"
-                android:text="1007hPa" />
+                tools:text="1007hPa" />
 
 
             <TextView
                 android:id="@+id/tv_visibility_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_pressure_text"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/pt_regular"
@@ -253,7 +244,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_visibility_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_visibility_label"
-                android:text="8.578KM" />
+                tools:text="8.578KM" />
 
         </LinearLayout>
 

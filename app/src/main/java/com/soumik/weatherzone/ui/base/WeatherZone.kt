@@ -1,4 +1,4 @@
-package com.soumik.weatherzone
+package com.soumik.weatherzone.ui.base
 
 import android.app.Application
 import android.content.Context
@@ -11,11 +11,11 @@ import android.content.Context
  */
 class WeatherZone:Application() {
     companion object{
-        lateinit var context: Context
+         lateinit var context: Context
     }
 
     override fun onCreate() {
         super.onCreate()
-        context=applicationContext
+        context =applicationContext
     }
 }
