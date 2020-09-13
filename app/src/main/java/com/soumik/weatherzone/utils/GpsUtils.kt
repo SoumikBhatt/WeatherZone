@@ -13,7 +13,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.LocationSettingsStatusCodes
 import com.google.android.gms.location.SettingsClient
-import com.soumik.weatherzone.data.repository.LocationProvider
+import com.soumik.weatherzone.data.repository.local.LocationProvider
 
 class GpsUtils(private val context: Context) {
 

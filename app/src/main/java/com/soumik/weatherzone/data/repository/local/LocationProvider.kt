@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.data.repository
+package com.soumik.weatherzone.data.repository.local
 
 import android.annotation.SuppressLint
 import android.content.Context

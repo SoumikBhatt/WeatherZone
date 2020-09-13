@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.data.repository
+package com.soumik.weatherzone.data.repository.local
 
 import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.utils.RequestCompleteListener

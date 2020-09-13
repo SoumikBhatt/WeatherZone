@@ -11,8 +11,8 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.soumik.weatherzone.R
-import com.soumik.weatherzone.data.models.ResponseWeatherByLocation
-import com.soumik.weatherzone.data.repository.LocationProvider
+import com.soumik.weatherzone.data.models.ResponseWeather
+import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.layout_additional_weather_info.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel:MyViewModel
-    private lateinit var model:LocationProvider
+    private lateinit var model: LocationProvider
     private lateinit var weatherRepo:WeatherRepository
     private var isGPSEnabled = false
 
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setUpUI(data: ResponseWeatherByLocation?) {
+    private fun setUpUI(data: ResponseWeather?) {
         tv_temp.text = data?.main?.temp.toString()
         tv_city_name.text = data?.name
         tv_weather_condition.text = data?.weather!![0].main
@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity() {
         tv_sunset_time.text = data.sys.sunset.unixTimestampToTimeString()
         tv_real_feel_text.text = "${data.main.feelsLike}${getString(R.string.degree_celsius_symbol)}"
         tv_cloudiness_text.text = "${data.clouds.all}%"
-        tv_wind_speed_text.text = "${data.wind.speed}km/h"
+        tv_wind_speed_text.text = "${data.wind.speed}m/s"
         tv_humidity_text.text = "${data.main.humidity}%"
         tv_pressure_text.text = "${data.main.pressure}hPa"
-        tv_visibility_text.text = "${data.visibility}KM"
+        tv_visibility_text.text = "${data.visibility}M"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

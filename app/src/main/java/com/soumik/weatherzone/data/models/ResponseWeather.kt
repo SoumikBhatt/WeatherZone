@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  * soumikcse07@gmail.com
  * http://soumikbhatt.github.io/
  */
-data class ResponseWeatherByLocation(
+data class ResponseWeather(
     @SerializedName("base")
     val base: String,
     @SerializedName("clouds")
