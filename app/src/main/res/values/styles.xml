@@ -11,6 +11,7 @@
     
     <style name="SearchViewText" parent="Widget.AppCompat.SearchView">
         <item name="android:fontFamily">@font/pt_regular</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">14sp</item>
     </style>
 

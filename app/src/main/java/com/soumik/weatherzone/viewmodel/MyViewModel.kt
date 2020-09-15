@@ -1,10 +1,13 @@
 package com.soumik.weatherzone.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.soumik.weatherzone.data.models.Cities
 import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.data.models.ResponseWeather
+import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.utils.RequestCompleteListener
@@ -26,7 +29,9 @@ class MyViewModel:ViewModel() {
 
     //weatherByLocation live data
     val weatherByLocation = MutableLiveData<Resource<ResponseWeather>>()
-    val weatherByQuery = MutableLiveData<Resource<ResponseWeather>>()
+
+    //cityBySearch live data
+    val cityByQuery = MutableLiveData<Resource<List<Cities>>>()
 
     fun getCurrentLocation(model: LocationProvider){
         model.getUserCurrentLocation(object : RequestCompleteListener<LocationData>{
@@ -44,21 +49,6 @@ class MyViewModel:ViewModel() {
         viewModelScope.launch {  safeWeatherByLocationFetch(model,lat,lon) }
     }
 
-    fun getWeatherByQuery(model: WeatherRepository,query:String) = viewModelScope.launch { safeWeatherByQueryFetch(model,query) }
-
-    private suspend fun safeWeatherByQueryFetch(model: WeatherRepository, query: String) {
-        weatherByQuery.postValue(Resource.loading(null))
-        try {
-            val response = model.getWeatherByQuery(query)
-            weatherByQuery.postValue(handleWeatherResponse(response))
-        } catch (t:Throwable){
-            when(t) {
-                is IOException -> weatherByQuery.postValue(Resource.error(null,"Network Failure"))
-                else -> weatherByQuery.postValue(Resource.error(null,t.localizedMessage))
-            }
-        }
-    }
-
     private suspend fun safeWeatherByLocationFetch(model: WeatherRepository,lat: String,lon: String) {
         weatherByLocation.postValue(Resource.loading(null))
         try {
@@ -72,9 +62,27 @@ class MyViewModel:ViewModel() {
         }
     }
 
-    //both location and query wise
     private fun handleWeatherResponse(response: Response<ResponseWeather>): Resource<ResponseWeather>? {
         return if (response.isSuccessful) Resource.success(response.body()) else Resource.error(null,"Error: ${response.errorBody()}")
     }
+
+    fun getCityByQuery(model: CityRepository,query:String) = viewModelScope.launch { safeCityByQueryFetch(model,query) }
+
+    private suspend fun safeCityByQueryFetch(model: CityRepository, query: String) {
+        cityByQuery.postValue(Resource.loading(null))
+        try {
+            val response = model.searchCities(key = query)
+            cityByQuery.postValue(handleCitySearch(response))
+        } catch (t:Throwable){
+            when(t) {
+                is IOException -> cityByQuery.postValue(Resource.error(null,"Network Failure"))
+                else -> cityByQuery.postValue(Resource.error(null,t.localizedMessage))
+            }
+        }
+    }
+
+    private fun handleCitySearch(response: List<Cities>): Resource<List<Cities>>? = Resource.success(response)
+
+
 
 }
