@@ -25,6 +25,7 @@ class CityAdapter(private val context:Context):RecyclerView.Adapter<CityAdapter.
         val cityName = itemView.tv_city_name!!
         val countryName = itemView.tv_country_name!!
         val addBtn = itemView.iv_add_city!!
+        val addedTV = itemView.tv_added!!
     }
 
     private val differCallback = object: DiffUtil.ItemCallback<Cities>(){
@@ -51,8 +52,25 @@ class CityAdapter(private val context:Context):RecyclerView.Adapter<CityAdapter.
         holder.apply {
             cityName.text = cities?.name
             countryName.text = cities?.country
-            addBtn.setOnClickListener { showToast(context,"To add on DB",0) }
+            if (cities?.isSaved==1) {
+                addBtn.visibility=View.GONE
+                addedTV.visibility=View.VISIBLE
+            } else {
+                addedTV.visibility=View.GONE
+                addBtn.visibility=View.VISIBLE
+            }
+            addBtn.setOnClickListener {
+                onItemClickListener?.let { it(cities!!) }
+                addedTV.visibility=View.VISIBLE
+                addBtn.visibility=View.GONE
+            }
         }
+    }
+
+    private var onItemClickListener: ((Cities)->Unit)?=null
+
+    fun setOnItemClickListener(listener: (Cities)->Unit){
+        onItemClickListener = listener
     }
 
     override fun getItemCount(): Int {

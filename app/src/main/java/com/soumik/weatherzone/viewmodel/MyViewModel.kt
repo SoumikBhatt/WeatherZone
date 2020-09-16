@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soumik.weatherzone.data.models.Cities
+import com.soumik.weatherzone.data.models.CityUpdate
 import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.data.models.ResponseWeather
 import com.soumik.weatherzone.data.repository.local.CityRepository
@@ -12,6 +13,8 @@ import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.utils.RequestCompleteListener
 import com.soumik.weatherzone.utils.Resource
+import com.soumik.weatherzone.utils.error
+import com.soumik.weatherzone.utils.info
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
@@ -47,6 +50,10 @@ class MyViewModel:ViewModel() {
         })
     }
 
+    /**
+     * Weather by Location call
+     */
+
     fun getWeatherByLocation(model:WeatherRepository,lat:String,lon:String) {
         viewModelScope.launch {  safeWeatherByLocationFetch(model,lat,lon) }
     }
@@ -68,6 +75,10 @@ class MyViewModel:ViewModel() {
         return if (response.isSuccessful) Resource.success(response.body()) else Resource.error(null,"Error: ${response.errorBody()}")
     }
 
+    /**
+     * City by query call
+     */
+
     fun getCityByQuery(model: CityRepository,query:String) = viewModelScope.launch { safeCityByQueryFetch(model,query) }
 
     private suspend fun safeCityByQueryFetch(model: CityRepository, query: String) {
@@ -80,13 +91,27 @@ class MyViewModel:ViewModel() {
                 is IOException -> cityByQuery.postValue(Resource.error(null,"Network Failure"))
                 else -> {
                     cityByQuery.postValue(Resource.error(null,t.localizedMessage))
-                    com.soumik.weatherzone.utils.error(tag,t.localizedMessage!!)
+                    error(tag,t.localizedMessage!!)
                 }
             }
         }
     }
 
     private fun handleCitySearch(response: List<Cities>): Resource<List<Cities>>? = Resource.success(response)
+
+
+    /**
+     * Update City call
+     */
+
+    fun updateSavedCities(model: CityRepository,obj:CityUpdate) = viewModelScope.launch {
+        try {
+            val info = model.updateSavedCities(obj)
+            info(tag,"Success: Updating City DB: $info")
+        } catch (e:Exception) {
+            e.stackTrace
+            error(tag,"Error: Updating City DB: ${e.localizedMessage}")}
+    }
 
 
 

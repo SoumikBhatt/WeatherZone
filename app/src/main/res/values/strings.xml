@@ -18,4 +18,5 @@
     <string name="btn_label_forecast">5-day forecast</string>
     <string name="label_search_hint">Enter Location</string>
     <string name="txt_no_result">No results found</string>
+    <string name="text_added">Added</string>
 </resources>

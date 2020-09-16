@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.Cities
+import com.soumik.weatherzone.data.models.CityUpdate
 import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.db.CityDatabase
 import com.soumik.weatherzone.ui.main.adapters.CityAdapter
@@ -83,6 +84,8 @@ class SearchActivity : AppCompatActivity() {
             adapter = cityAdapter
         }
         cityAdapter.differ.submitList(data)
+
+        cityAdapter.setOnItemClickListener { viewModel.updateSavedCities(repository, CityUpdate(it.id,1)) }
     }
 
     private fun setUpUI() {
