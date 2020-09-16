@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.soumik.weatherzone.data.models.Cities
 import com.soumik.weatherzone.utils.DB_NAME
 
@@ -17,13 +19,24 @@ import com.soumik.weatherzone.utils.DB_NAME
 
 @Database(
     entities =[Cities::class],
-    version = 1
+    version = 2
 )
 abstract class CityDatabase:RoomDatabase() {
 
     abstract fun getCityDao():CityDao
 
     companion object{
+
+        private val MIGRATION_1_2 = object : Migration(1,2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                //do update query here,
+                // works like onUpgrade method of SQLite
+
+                //adding save table
+                database.execSQL("ALTER TABLE city_bd ADD COLUMN isSaved INTEGER DEFAULT NULL")
+            }
+
+        }
 
         @Volatile
         private var instance:CityDatabase?=null
@@ -33,6 +46,9 @@ abstract class CityDatabase:RoomDatabase() {
             instance?:createDatabase(context).also{ instance=it}
         }
 
-        private fun createDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,CityDatabase::class.java, DB_NAME).createFromAsset(DB_NAME).build()
+        private fun createDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,CityDatabase::class.java, DB_NAME)
+            .createFromAsset(DB_NAME)
+            .addMigrations(MIGRATION_1_2)
+            .build()
     }
 }

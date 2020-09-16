@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Pair
+import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.utils.lightStatusBar
@@ -26,7 +28,18 @@ class SavedCityActivity : AppCompatActivity() {
     }
 
     fun onBackButtonClicked(view: View) {
-        onBackPressed()
+        navigateBack()
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode==KeyEvent.KEYCODE_BACK) {
+            navigateBack()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun navigateBack() {
+        startActivity(Intent(this,MainActivity::class.java))
         finish()
     }
 }

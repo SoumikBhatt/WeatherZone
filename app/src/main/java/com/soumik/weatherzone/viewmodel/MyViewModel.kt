@@ -23,6 +23,8 @@ import java.io.IOException
  */
 class MyViewModel:ViewModel() {
 
+    val tag = "ViewModel"
+
     //location live data
     val locationLiveData = MutableLiveData<LocationData>()
     val locationLiveDataFailure = MutableLiveData<String>()
@@ -76,7 +78,10 @@ class MyViewModel:ViewModel() {
         } catch (t:Throwable){
             when(t) {
                 is IOException -> cityByQuery.postValue(Resource.error(null,"Network Failure"))
-                else -> cityByQuery.postValue(Resource.error(null,t.localizedMessage))
+                else -> {
+                    cityByQuery.postValue(Resource.error(null,t.localizedMessage))
+                    com.soumik.weatherzone.utils.error(tag,t.localizedMessage!!)
+                }
             }
         }
     }

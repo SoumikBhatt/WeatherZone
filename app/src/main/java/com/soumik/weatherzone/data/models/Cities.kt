@@ -32,5 +32,8 @@ data class Cities (
     var lon:Double?=null,
 
     @ColumnInfo(name = "coord_lat")
-    var lat:Double?=null
+    var lat:Double?=null,
+
+    @ColumnInfo(name = "isSaved")
+    var isSaved:Int?=null
 )

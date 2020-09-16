@@ -40,6 +40,8 @@ class SearchActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         repository = CityRepository(database)
 
+        sv_search_city.requestFocus()
+
         setUpUI()
         setUpObservers()
     }
