@@ -4,14 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.Cities
-import com.soumik.weatherzone.utils.showToast
 import kotlinx.android.synthetic.main.item_cities.view.*
 
 
@@ -20,7 +17,7 @@ import kotlinx.android.synthetic.main.item_cities.view.*
  * soumikcse07@gmail.com
  * http://soumikbhatt.github.io/
  */
-class CityAdapter(private val context:Context):RecyclerView.Adapter<CityAdapter.Holder>() {
+class CityAdapter():RecyclerView.Adapter<CityAdapter.Holder>() {
     class Holder(itemView:View):RecyclerView.ViewHolder(itemView) {
         val cityName = itemView.tv_city_name!!
         val countryName = itemView.tv_country_name!!
@@ -28,16 +25,7 @@ class CityAdapter(private val context:Context):RecyclerView.Adapter<CityAdapter.
         val addedTV = itemView.tv_added!!
     }
 
-    private val differCallback = object: DiffUtil.ItemCallback<Cities>(){
-        override fun areItemsTheSame(oldItem: Cities, newItem: Cities): Boolean {
-            return oldItem.id==newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: Cities, newItem: Cities): Boolean {
-            return oldItem==newItem
-        }
-    }
-    val differ = AsyncListDiffer(this,differCallback)
+    val differ = AsyncListDiffer(this,DiffUtilCallback())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_cities,parent,false))

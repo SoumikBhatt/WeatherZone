@@ -1,5 +1,6 @@
 package com.soumik.weatherzone.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Update
@@ -21,4 +22,7 @@ interface CityDao {
 
     @Update(entity = Cities::class)
     suspend fun updateSavedCity(vararg obj:CityUpdate):Int
+
+    @Query("SELECT * FROM city_bd WHERE isSaved= :key")
+    fun getSavedCity(key:Int):LiveData<List<Cities>>
 }

@@ -99,7 +99,6 @@ class MyViewModel:ViewModel() {
 
     private fun handleCitySearch(response: List<Cities>): Resource<List<Cities>>? = Resource.success(response)
 
-
     /**
      * Update City call
      */
@@ -112,6 +111,11 @@ class MyViewModel:ViewModel() {
             e.stackTrace
             error(tag,"Error: Updating City DB: ${e.localizedMessage}")}
     }
+
+    /**
+     * Saved City call
+     */
+    fun getSavedCities(model: CityRepository,key:Int) =  model.getSavedCities(key)
 
 
 

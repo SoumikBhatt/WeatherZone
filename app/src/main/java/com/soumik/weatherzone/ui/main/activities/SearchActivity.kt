@@ -77,7 +77,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView(data: List<Cities>) {
-        val cityAdapter = CityAdapter(this)
+        val cityAdapter = CityAdapter()
         rv_searched_result.apply {
             layoutManager = LinearLayoutManager(this@SearchActivity)
             setHasFixedSize(true)

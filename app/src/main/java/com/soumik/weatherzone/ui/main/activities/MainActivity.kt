@@ -11,9 +11,12 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.soumik.weatherzone.R
+import com.soumik.weatherzone.data.models.CityUpdate
 import com.soumik.weatherzone.data.models.ResponseWeather
+import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
+import com.soumik.weatherzone.db.CityDatabase
 import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel:MyViewModel
     private lateinit var model: LocationProvider
     private lateinit var weatherRepo:WeatherRepository
+    private lateinit var cityRepo:CityRepository
     private var isGPSEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         model = LocationProvider(this)
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         weatherRepo = WeatherRepository()
+        cityRepo = CityRepository(CityDatabase(this))
 
         //checking GPS status
         GpsUtils(this).turnGPSOn(object : GpsUtils.OnGpsListener {
@@ -63,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                         inc_info_weather.visibility=View.VISIBLE
                         progressBar.visibility=View.GONE
                         setUpUI(it.data)
+                        viewModel.updateSavedCities(cityRepo, CityUpdate(it.data?.id,1))
                     }
                     Status.ERROR->{
                         progressBar.visibility=View.GONE

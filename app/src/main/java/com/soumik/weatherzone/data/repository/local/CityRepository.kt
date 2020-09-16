@@ -13,4 +13,5 @@ class CityRepository (private val database: CityDatabase) {
 
     suspend fun searchCities(key:String) = database.getCityDao().searchCity(key)
     suspend fun updateSavedCities(obj:CityUpdate) = database.getCityDao().updateSavedCity(obj)
+    fun getSavedCities(key: Int) = database.getCityDao().getSavedCity(key)
 }
