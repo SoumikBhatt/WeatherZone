@@ -11,5 +11,5 @@ import com.soumik.weatherzone.network.RetrofitClient
 class WeatherRepository {
 
     suspend fun getWeatherByLocation(lat:String,lon:String) = RetrofitClient.api.getWeatherByLocation(lat,lon)
-    suspend fun getWeatherByQuery(query:String) = RetrofitClient.api.getWeatherByQuery(query)
+    suspend fun getWeatherByCityID(id:String) = RetrofitClient.api.getWeatherByCityID(id)
 }

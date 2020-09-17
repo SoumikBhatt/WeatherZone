@@ -43,7 +43,7 @@ class SavedCityAdapter:RecyclerView.Adapter<SavedCityAdapter.Holder>() {
         holder.apply {
             cityName.text = cities?.name
             countryName.text = cities?.country
-            temperature.text = "32°C"
+            temperature.text = ""
             itemView.setOnClickListener { onItemClickListener?.let { it(cities!!) } }
         }
     }

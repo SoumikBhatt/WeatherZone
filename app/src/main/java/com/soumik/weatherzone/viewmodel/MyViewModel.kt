@@ -38,6 +38,9 @@ class MyViewModel:ViewModel() {
     //cityBySearch live data
     val cityByQuery = MutableLiveData<Resource<List<Cities>>>()
 
+    //weatherByCityID live data
+    val weatherByCityID = MutableLiveData<Resource<ResponseWeather>>()
+
     fun getCurrentLocation(model: LocationProvider){
         model.getUserCurrentLocation(object : RequestCompleteListener<LocationData>{
             override fun onRequestCompleted(data: LocationData) {
@@ -67,6 +70,27 @@ class MyViewModel:ViewModel() {
             when(t){
                 is IOException -> weatherByLocation.postValue(Resource.error(null,"Network Failure"))
                 else -> weatherByLocation.postValue(Resource.error(null,t.localizedMessage))
+            }
+        }
+    }
+
+    /**
+     * Weather by CityID call
+     */
+
+    fun getWeatherByCityID(model: WeatherRepository,id:String){
+        viewModelScope.launch { safeWeatherByCityIDFetch(model,id) }
+    }
+
+    private suspend fun safeWeatherByCityIDFetch(model: WeatherRepository, id: String) {
+        weatherByCityID.postValue(Resource.loading(null))
+        try {
+            val response = model.getWeatherByCityID(id)
+            weatherByCityID.postValue(handleWeatherResponse(response))
+        } catch (t:Throwable) {
+            when(t){
+                is IOException -> weatherByCityID.postValue(Resource.error(null,"Network Failure"))
+                else -> weatherByCityID.postValue(Resource.error(null,t.localizedMessage))
             }
         }
     }

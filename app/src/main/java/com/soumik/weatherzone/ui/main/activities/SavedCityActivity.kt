@@ -54,7 +54,7 @@ class SavedCityActivity : AppCompatActivity() {
         }
 
         mAdapter.setOnItemClickListener {
-            showToast(this@SavedCityActivity,"Work in progress!!",0)
+            startActivity(Intent(this@SavedCityActivity,WeatherDetailsActivity::class.java).putExtra(WeatherDetailsActivity.CITY_ID,it.id.toString()))
         }
     }
 

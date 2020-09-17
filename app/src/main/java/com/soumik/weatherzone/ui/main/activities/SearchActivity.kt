@@ -86,6 +86,9 @@ class SearchActivity : AppCompatActivity() {
         cityAdapter.differ.submitList(data)
 
         cityAdapter.setOnItemClickListener { viewModel.updateSavedCities(repository, CityUpdate(it.id,1)) }
+        cityAdapter.setOnParentClickListener {
+            startActivity(Intent(this@SearchActivity,WeatherDetailsActivity::class.java).putExtra(WeatherDetailsActivity.CITY_ID,it.id.toString()))
+        }
     }
 
     private fun setUpUI() {

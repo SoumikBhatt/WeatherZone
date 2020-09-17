@@ -52,13 +52,21 @@ class CityAdapter():RecyclerView.Adapter<CityAdapter.Holder>() {
                 addedTV.visibility=View.VISIBLE
                 addBtn.visibility=View.GONE
             }
+            itemView.setOnClickListener {
+                onParentItemClickListener?.let { it(cities!!) }
+            }
         }
     }
 
     private var onItemClickListener: ((Cities)->Unit)?=null
+    private var onParentItemClickListener: ((Cities)->Unit) ? =null
 
     fun setOnItemClickListener(listener: (Cities)->Unit){
         onItemClickListener = listener
+    }
+
+    fun setOnParentClickListener(listener: (Cities) -> Unit) {
+        onParentItemClickListener = listener
     }
 
     override fun getItemCount(): Int {

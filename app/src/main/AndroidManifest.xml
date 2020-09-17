@@ -3,30 +3,31 @@
     package="com.soumik.weatherzone">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".ui.base.WeatherZone"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".ui.base.WeatherZone"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.soumik.weatherzone.ui.main.activities.ForecastActivity"/>
-        <activity android:name="com.soumik.weatherzone.ui.main.activities.SearchActivity" />
-        <activity android:name="com.soumik.weatherzone.ui.main.activities.SavedCityActivity" />
-        <activity android:name="com.soumik.weatherzone.ui.main.activities.SplashScreenActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.main.activities.WeatherDetailsActivity"></activity>
+        <activity android:name=".ui.main.activities.ForecastActivity" />
+        <activity android:name=".ui.main.activities.SearchActivity" />
+        <activity android:name=".ui.main.activities.SavedCityActivity" />
+        <activity android:name=".ui.main.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.soumik.weatherzone.ui.main.activities.MainActivity" />
+        <activity android:name=".ui.main.activities.MainActivity" />
     </application>
 
 </manifest>

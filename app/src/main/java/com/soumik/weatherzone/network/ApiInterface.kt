@@ -21,8 +21,8 @@ interface ApiInterface {
     ):Response<ResponseWeather>
 
     @GET("weather")
-    suspend fun getWeatherByQuery(
-        @Query("q")
+    suspend fun getWeatherByCityID(
+        @Query("id")
         query:String
     ):Response<ResponseWeather>
 }
