@@ -2,6 +2,8 @@ package com.soumik.weatherzone.ui.main.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.soumik.weatherzone.data.models.Cities
+import com.soumik.weatherzone.data.models.Daily
+import com.soumik.weatherzone.data.models.ResponseWeatherForecast
 
 
 /**
@@ -9,7 +11,7 @@ import com.soumik.weatherzone.data.models.Cities
  * soumikcse07@gmail.com
  * http://soumikbhatt.github.io/
  */
-class DiffUtilCallback:DiffUtil.ItemCallback<Cities>() {
+class  DiffUtilCallback:DiffUtil.ItemCallback<Cities>() {
     override fun areItemsTheSame(oldItem: Cities, newItem: Cities): Boolean {
         return oldItem.id==newItem.id
     }
@@ -17,4 +19,15 @@ class DiffUtilCallback:DiffUtil.ItemCallback<Cities>() {
     override fun areContentsTheSame(oldItem: Cities, newItem: Cities): Boolean {
         return oldItem==newItem
     }
+}
+
+class DiffUtilCallbackForecast:DiffUtil.ItemCallback<Daily>(){
+    override fun areItemsTheSame(oldItem: Daily, newItem: Daily): Boolean {
+        return oldItem.dt==newItem.dt
+    }
+
+    override fun areContentsTheSame(oldItem: Daily, newItem: Daily): Boolean {
+        return oldItem==newItem
+    }
+
 }

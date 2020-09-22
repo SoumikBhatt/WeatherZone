@@ -17,6 +17,7 @@ import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.db.CityDatabase
+import com.soumik.weatherzone.ui.main.adapters.ForecastAdapter
 import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherRepo:WeatherRepository
     private lateinit var cityRepo:CityRepository
     private var isGPSEnabled = false
+    private var lat:String?=null
+    private var lon:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +100,9 @@ class MainActivity : AppCompatActivity() {
         tv_humidity_text.text = "${data.main.humidity}%"
         tv_pressure_text.text = "${data.main.pressure}hPa"
         tv_visibility_text.text = "${data.visibility}M"
+
+        lat = data.coord.lat.toString()
+        lon = data.coord.lon.toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -170,6 +176,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onForecastButtonClicked(view: View) {
-        startActivity(Intent(this@MainActivity,ForecastActivity::class.java))
+        startActivity(Intent(this@MainActivity,ForecastActivity::class.java)
+            .putExtra(ForecastActivity.LATITUDE,lat)
+            .putExtra(ForecastActivity.LONGITUDE,lon))
     }
 }

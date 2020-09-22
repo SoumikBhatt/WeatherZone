@@ -15,7 +15,7 @@
     <string name="label_pressure">Pressure</string>
     <string name="label_wind_speed">Wind speed</string>
     <string name="label_visibility">Visibility</string>
-    <string name="btn_label_forecast">5-day forecast</string>
+    <string name="btn_label_forecast">7-day forecast</string>
     <string name="label_search_hint">Enter Location</string>
     <string name="txt_no_result">No results found</string>
     <string name="text_added">Added</string>

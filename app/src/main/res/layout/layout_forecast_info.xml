@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardBackgroundColor="@color/colorPrimaryLight"
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp"
@@ -59,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
 
@@ -69,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
                 <TextView
@@ -78,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
                 <TextView
@@ -87,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
                 <TextView
@@ -96,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
             </LinearLayout>
@@ -150,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
                 <TextView
@@ -159,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
 
@@ -169,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
                 <TextView
@@ -178,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/pt_regular"
-                    android:text="@string/degree_celsius_symbol_with_temp3"
+                    tools:text="@string/degree_celsius_symbol_with_temp3"
                     android:textColor="@color/light_grey" />
 
 
@@ -220,7 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="05:42 AM"
+                    tools:text="05:42 AM"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
@@ -247,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="05:42 AM"
+                    tools:text="05:42 AM"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>

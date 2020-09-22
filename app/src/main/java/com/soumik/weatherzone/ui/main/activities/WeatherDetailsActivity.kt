@@ -22,6 +22,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: MyViewModel
     private lateinit var weatherRepo: WeatherRepository
     private var cityID:String?=null
+    private var lat:String?=null
+    private var lon:String?=null
 
     companion object{
         const val CITY_ID = "city_id"
@@ -77,6 +79,9 @@ class WeatherDetailsActivity : AppCompatActivity() {
         tv_humidity_text.text = "${data.main.humidity}%"
         tv_pressure_text.text = "${data.main.pressure}hPa"
         tv_visibility_text.text = "${data.visibility}M"
+
+        lat = data.coord.lat.toString()
+        lon = data.coord.lon.toString()
     }
 
     fun onAddButtonClicked(view: View) {
@@ -85,7 +90,9 @@ class WeatherDetailsActivity : AppCompatActivity() {
     }
 
     fun onForecastButtonClicked(view: View) {
-        startActivity(Intent(this@WeatherDetailsActivity,ForecastActivity::class.java))
+        startActivity(Intent(this@WeatherDetailsActivity,ForecastActivity::class.java)
+            .putExtra(ForecastActivity.LATITUDE,lat)
+            .putExtra(ForecastActivity.LONGITUDE,lon))
         finish()
     }
 

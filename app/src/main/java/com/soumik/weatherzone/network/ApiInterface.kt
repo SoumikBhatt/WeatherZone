@@ -1,6 +1,7 @@
 package com.soumik.weatherzone.network
 
 import com.soumik.weatherzone.data.models.ResponseWeather
+import com.soumik.weatherzone.data.models.ResponseWeatherForecast
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -17,7 +18,7 @@ interface ApiInterface {
         @Query("lat")
         latitude:String,
         @Query("lon")
-        longitude:String,
+        longitude:String
     ):Response<ResponseWeather>
 
     @GET("weather")
@@ -25,4 +26,14 @@ interface ApiInterface {
         @Query("id")
         query:String
     ):Response<ResponseWeather>
+
+    @GET("onecall")
+    suspend fun getWeatherForecast(
+        @Query("lat")
+        latitude:String,
+        @Query("lon")
+        longitude:String,
+        @Query("exclude")
+        exclude:String
+    ):Response<ResponseWeatherForecast>
 }

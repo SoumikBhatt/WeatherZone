@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soumik.weatherzone.data.models.Cities
-import com.soumik.weatherzone.data.models.CityUpdate
-import com.soumik.weatherzone.data.models.LocationData
-import com.soumik.weatherzone.data.models.ResponseWeather
+import com.soumik.weatherzone.data.models.*
 import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
@@ -41,6 +38,9 @@ class MyViewModel:ViewModel() {
     //weatherByCityID live data
     val weatherByCityID = MutableLiveData<Resource<ResponseWeather>>()
 
+    //weatherForecast live data
+    val weatherForecast = MutableLiveData<Resource<ResponseWeatherForecast>>()
+
     fun getCurrentLocation(model: LocationProvider){
         model.getUserCurrentLocation(object : RequestCompleteListener<LocationData>{
             override fun onRequestCompleted(data: LocationData) {
@@ -56,7 +56,6 @@ class MyViewModel:ViewModel() {
     /**
      * Weather by Location call
      */
-
     fun getWeatherByLocation(model:WeatherRepository,lat:String,lon:String) {
         viewModelScope.launch {  safeWeatherByLocationFetch(model,lat,lon) }
     }
@@ -77,7 +76,6 @@ class MyViewModel:ViewModel() {
     /**
      * Weather by CityID call
      */
-
     fun getWeatherByCityID(model: WeatherRepository,id:String){
         viewModelScope.launch { safeWeatherByCityIDFetch(model,id) }
     }
@@ -100,9 +98,32 @@ class MyViewModel:ViewModel() {
     }
 
     /**
+     * Weather Forecast call
+     */
+    fun getWeatherForecast(model: WeatherRepository,lat: String,lon: String,exclude:String) {
+        viewModelScope.launch { safeWeatherForecastFetch(model,lat,lon,exclude) }
+    }
+
+    private suspend fun safeWeatherForecastFetch(model: WeatherRepository,lat: String, lon: String, exclude: String) {
+        weatherForecast.postValue(Resource.loading(null))
+        try {
+            val response = model.getWeatherForecast(lat,lon, exclude)
+            weatherForecast.postValue(handleWeatherForecast(response))
+        } catch (t:Throwable){
+            when(t){
+                is IOException -> weatherForecast.postValue(Resource.error(null,"Network Failure"))
+                else -> weatherForecast.postValue(Resource.error(null,t.localizedMessage))
+            }
+        }
+    }
+
+    private fun handleWeatherForecast(response: Response<ResponseWeatherForecast>): Resource<ResponseWeatherForecast>? {
+        return if (response.isSuccessful) Resource.success(response.body()) else Resource.error(null,"Error: ${response.errorBody()}")
+    }
+
+    /**
      * City by query call
      */
-
     fun getCityByQuery(model: CityRepository,query:String) = viewModelScope.launch { safeCityByQueryFetch(model,query) }
 
     private suspend fun safeCityByQueryFetch(model: CityRepository, query: String) {
@@ -126,7 +147,6 @@ class MyViewModel:ViewModel() {
     /**
      * Update City call
      */
-
     fun updateSavedCities(model: CityRepository,obj:CityUpdate) = viewModelScope.launch {
         try {
             val info = model.updateSavedCities(obj)
