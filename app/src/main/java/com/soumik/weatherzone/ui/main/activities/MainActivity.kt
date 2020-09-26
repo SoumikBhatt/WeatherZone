@@ -21,7 +21,7 @@ import com.soumik.weatherzone.ui.main.adapters.ForecastAdapter
 import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_info.*
+import kotlinx.android.synthetic.main.layout_info.*
 import kotlinx.android.synthetic.main.layout_additional_weather_info.*
 
 class MainActivity : AppCompatActivity() {

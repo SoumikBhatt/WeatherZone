@@ -14,7 +14,7 @@ import com.soumik.weatherzone.utils.showToast
 import com.soumik.weatherzone.utils.unixTimestampToTimeString
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_weather_details.*
-import kotlinx.android.synthetic.main.item_info.*
+import kotlinx.android.synthetic.main.layout_info.*
 import kotlinx.android.synthetic.main.layout_additional_weather_info.*
 
 class WeatherDetailsActivity : AppCompatActivity() {
@@ -36,6 +36,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         weatherRepo = WeatherRepository()
 
+        iv_add.setImageResource(R.drawable.ic_arrow_back_white)
+        iv_more.visibility = View.GONE
 
         cityID = intent.getStringExtra(CITY_ID)
 
@@ -85,7 +87,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
     }
 
     fun onAddButtonClicked(view: View) {
-        startActivity(Intent(this@WeatherDetailsActivity,SavedCityActivity::class.java))
+        onBackPressed()
         finish()
     }
 

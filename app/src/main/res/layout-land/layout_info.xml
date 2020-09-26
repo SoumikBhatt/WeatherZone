@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.main.activities.MainActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/desc_add_city"
+        android:onClick="onAddButtonClicked"
+        android:src="@drawable/ic_baseline_add_24" />
+    <ImageView
+        android:id="@+id/iv_more"
+        android:src="@drawable/ic_more"
+        android:layout_width="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_centerVertical="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_height="28dp"
+        android:contentDescription="@string/desc_more" />
+
+    <TextView
+        android:id="@+id/tv_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/pt_bold"
+        android:textColor="@color/light_grey"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/iv_more"
+        app:layout_constraintStart_toEndOf="@+id/iv_add"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Sylhet" />
+
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/ll_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_forecast"
+        app:layout_constraintTop_toBottomOf="@id/tv_city_name"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/pt_bold"
+                    android:textColor="@color/light_grey"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="72sp"
+                    tools:text="30" />
+
+                <TextView
+                    android:id="@+id/tv_temp_degree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/pt_regular"
+                    android:text="@string/degree_celsius_symbol"
+                    android:textColor="@color/light_grey"
+                    app:layout_constraintStart_toEndOf="@+id/tv_temp"
+                    app:layout_constraintTop_toTopOf="@+id/tv_temp" />
+
+                <TextView
+                    android:id="@+id/tv_weather_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/pt_bold"
+                    android:textColor="@color/light_grey"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_temp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_temp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_temp"
+                    tools:text="Cloudy" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include2"
+            layout="@layout/layout_additional_weather_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_weather_condition" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_forecast"
+        android:layout_width="0dp"
+        android:onClick="onForecastButtonClicked"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_button"
+        android:text="@string/btn_label_forecast"
+        android:textColor="@color/light_grey"
+        android:textStyle="bold"
+        android:fontFamily="@font/pt_bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
