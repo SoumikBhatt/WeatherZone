@@ -24,6 +24,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private var cityID:String?=null
     private var lat:String?=null
     private var lon:String?=null
+    private var city:String?=null
 
     companion object{
         const val CITY_ID = "city_id"
@@ -84,6 +85,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
 
         lat = data.coord.lat.toString()
         lon = data.coord.lon.toString()
+        city = data.name
     }
 
     fun onAddButtonClicked(view: View) {
@@ -94,7 +96,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
     fun onForecastButtonClicked(view: View) {
         startActivity(Intent(this@WeatherDetailsActivity,ForecastActivity::class.java)
             .putExtra(ForecastActivity.LATITUDE,lat)
-            .putExtra(ForecastActivity.LONGITUDE,lon))
+            .putExtra(ForecastActivity.LONGITUDE,lon)
+            .putExtra(ForecastActivity.CITY_NAME,city))
         finish()
     }
 

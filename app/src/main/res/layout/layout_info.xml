@@ -25,6 +25,7 @@
         android:layout_width="28dp"
         android:layout_marginTop="8dp"
         android:layout_centerVertical="true"
+        android:onClick="onMoreOptionClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_alignParentEnd="true"

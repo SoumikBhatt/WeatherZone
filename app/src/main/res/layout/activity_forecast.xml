@@ -7,14 +7,8 @@
     android:background="@android:color/white"
     tools:context=".ui.main.activities.ForecastActivity">
 
-
-
-    <include
-        layout="@layout/layout_toolbar"
-        android:id="@+id/layout_tool"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/layout_toolbar"
+        android:id="@+id/tool_layout"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +41,7 @@
         android:id="@+id/rv_forecast"
         android:visibility="gone"
         tools:listitem="@layout/item_forecast"
-        app:layout_constraintTop_toBottomOf="@+id/layout_tool"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private var isGPSEnabled = false
     private var lat:String?=null
     private var lon:String?=null
+    private var city:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
 
         lat = data.coord.lat.toString()
         lon = data.coord.lon.toString()
+        city = data.name
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -178,6 +180,11 @@ class MainActivity : AppCompatActivity() {
     fun onForecastButtonClicked(view: View) {
         startActivity(Intent(this@MainActivity,ForecastActivity::class.java)
             .putExtra(ForecastActivity.LATITUDE,lat)
-            .putExtra(ForecastActivity.LONGITUDE,lon))
+            .putExtra(ForecastActivity.LONGITUDE,lon)
+            .putExtra(ForecastActivity.CITY_NAME,city))
+    }
+
+    fun onMoreOptionClicked(view: View) {
+        showMoreOptions(this@MainActivity)
     }
 }

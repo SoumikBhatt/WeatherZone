@@ -12,6 +12,7 @@ import com.soumik.weatherzone.utils.Status
 import com.soumik.weatherzone.utils.lightStatusBar
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_forecast.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class ForecastActivity : AppCompatActivity() {
 
@@ -20,13 +21,14 @@ class ForecastActivity : AppCompatActivity() {
     private lateinit var mAdapter: ForecastAdapter
     private var lat:String?=null
     private var lon:String?=null
+    private var city:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor=resources.getColor(android.R.color.white)
         lightStatusBar(this,true)
-        window.navigationBarColor=resources.getColor(android.R.color.white)
         setContentView(R.layout.activity_forecast)
+
 
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         repository = WeatherRepository()
@@ -34,6 +36,9 @@ class ForecastActivity : AppCompatActivity() {
 
         lat = intent.getStringExtra(LATITUDE)
         lon = intent.getStringExtra(LONGITUDE)
+        city = intent.getStringExtra(CITY_NAME)
+
+        tv_tool_title.text = city
 
         if (lat!=null && lon!=null) viewModel.getWeatherForecast(repository,lat!!,lon!!,EXCLUDE)
 
@@ -85,6 +90,7 @@ class ForecastActivity : AppCompatActivity() {
     companion object {
         const val LATITUDE = "lat"
         const val LONGITUDE = "lon"
+        const val CITY_NAME = "city"
         const val EXCLUDE = "current,minutely,hourly"
     }
 }

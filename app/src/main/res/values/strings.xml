@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Weather Zone</string>
+    <string name="app_email">piyal.developer@gmail.com</string>
     <string name="desc_add_city">addCity</string>
     <string name="desc_more">moreOptions</string>
     <string name="desc_back">backStack</string>
@@ -19,4 +20,6 @@
     <string name="label_search_hint">Enter Location</string>
     <string name="txt_no_result">No results found</string>
     <string name="text_added">Added</string>
+    <string name="text_share">Share</string>
+    <string name="txt_feedback">Feedback</string>
 </resources>
