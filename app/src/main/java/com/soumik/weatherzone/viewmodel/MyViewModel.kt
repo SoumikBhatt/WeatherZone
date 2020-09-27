@@ -23,7 +23,7 @@ import java.io.IOException
  */
 class MyViewModel:ViewModel() {
 
-    val tag = "ViewModel"
+    private val tag = "ViewModel"
 
     //location live data
     val locationLiveData = MutableLiveData<LocationData>()

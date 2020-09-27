@@ -13,7 +13,12 @@ import com.soumik.weatherzone.utils.Status
 import com.soumik.weatherzone.utils.showToast
 import com.soumik.weatherzone.utils.unixTimestampToTimeString
 import com.soumik.weatherzone.viewmodel.MyViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_weather_details.*
+import kotlinx.android.synthetic.main.activity_weather_details.anim_failed
+import kotlinx.android.synthetic.main.activity_weather_details.anim_network
+import kotlinx.android.synthetic.main.activity_weather_details.inc_info_weather
+import kotlinx.android.synthetic.main.activity_weather_details.progressBar
 import kotlinx.android.synthetic.main.layout_info.*
 import kotlinx.android.synthetic.main.layout_additional_weather_info.*
 
@@ -55,18 +60,37 @@ class WeatherDetailsActivity : AppCompatActivity() {
                     Status.SUCCESS->{
                         inc_info_weather.visibility=View.VISIBLE
                         progressBar.visibility=View.GONE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                         setUpUI(it.data)
                     }
                     Status.ERROR->{
-                        progressBar.visibility=View.GONE
-                        showToast(this@WeatherDetailsActivity, resource.message!!,1)
+                       showFailedView(it.message)
                     }
                     Status.LOADING->{
                         progressBar.visibility=View.VISIBLE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                     }
                 }
             }
         })
+    }
+
+    private fun showFailedView(message: String?) {
+        progressBar.visibility=View.GONE
+        inc_info_weather.visibility=View.GONE
+
+        when(message){
+            "Network Failure" -> {
+                anim_failed.visibility=View.GONE
+                anim_network.visibility=View.VISIBLE
+            }
+            else ->{
+                anim_network.visibility=View.GONE
+                anim_failed.visibility=View.VISIBLE
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

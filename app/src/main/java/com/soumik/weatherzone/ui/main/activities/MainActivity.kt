@@ -71,21 +71,40 @@ class MainActivity : AppCompatActivity() {
                     Status.SUCCESS->{
                         inc_info_weather.visibility=View.VISIBLE
                         progressBar.visibility=View.GONE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                         setUpUI(it.data)
                         viewModel.updateSavedCities(cityRepo, CityUpdate(it.data?.id,1))
                     }
                     Status.ERROR->{
-                        progressBar.visibility=View.GONE
-                        showToast(this@MainActivity, resource.message!!,1)
+                        showFailedView(it.message)
                     }
                     Status.LOADING->{
                         progressBar.visibility=View.VISIBLE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                     }
                 }
             }
         })
 
 
+    }
+
+    private fun showFailedView(message: String?) {
+        progressBar.visibility=View.GONE
+        inc_info_weather.visibility=View.GONE
+
+        when(message){
+            "Network Failure" -> {
+                anim_failed.visibility=View.GONE
+                anim_network.visibility=View.VISIBLE
+            }
+            else ->{
+                anim_network.visibility=View.GONE
+                anim_failed.visibility=View.VISIBLE
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

@@ -39,7 +39,7 @@ fun info(tag:String,message:String) {
 
 fun lightStatusBar(activity:Activity,value:Boolean){
     if (value){
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
     }

@@ -12,6 +12,9 @@ import com.soumik.weatherzone.utils.Status
 import com.soumik.weatherzone.utils.lightStatusBar
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_forecast.*
+import kotlinx.android.synthetic.main.activity_forecast.anim_failed
+import kotlinx.android.synthetic.main.activity_forecast.anim_network
+import kotlinx.android.synthetic.main.activity_forecast.progressBar
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class ForecastActivity : AppCompatActivity() {
@@ -54,23 +57,41 @@ class ForecastActivity : AppCompatActivity() {
                     Status.SUCCESS-> {
                         progressBar.visibility=View.GONE
                         tv_error_msg.visibility=View.GONE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                         rv_forecast.visibility=View.VISIBLE
                         mAdapter.differ.submitList(it.data?.daily)
                     }
                     Status.ERROR-> {
-                        progressBar.visibility=View.GONE
-                        tv_error_msg.visibility=View.VISIBLE
-                        rv_forecast.visibility=View.GONE
-                        tv_error_msg.text = it.message
+                        showFailedView(it.message)
                     }
                     Status.LOADING-> {
                         progressBar.visibility=View.VISIBLE
                         tv_error_msg.visibility=View.GONE
                         rv_forecast.visibility=View.GONE
+                        anim_failed.visibility=View.GONE
+                        anim_network.visibility=View.GONE
                     }
                 }
             }
         })
+    }
+
+    private fun showFailedView(message: String?) {
+        progressBar.visibility=View.GONE
+        tv_error_msg.visibility=View.GONE
+        rv_forecast.visibility=View.GONE
+
+        when(message){
+            "Network Failure" -> {
+                anim_failed.visibility=View.GONE
+                anim_network.visibility=View.VISIBLE
+            }
+            else ->{
+                anim_network.visibility=View.GONE
+                anim_failed.visibility=View.VISIBLE
+            }
+        }
     }
 
     private fun setUpRecyclerView() {
