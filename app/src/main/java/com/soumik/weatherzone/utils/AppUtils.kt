@@ -1,11 +1,9 @@
 package com.soumik.weatherzone.utils
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
 import android.view.Gravity
@@ -17,7 +15,6 @@ import android.widget.Toast
 import com.soumik.utilslibrary.Utills
 import com.soumik.weatherzone.BuildConfig
 import com.soumik.weatherzone.R
-import com.soumik.weatherzone.ui.base.WeatherZone
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -17,7 +17,6 @@ import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.data.repository.local.LocationProvider
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.db.CityDatabase
-import com.soumik.weatherzone.ui.main.adapters.ForecastAdapter
 import com.soumik.weatherzone.utils.*
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_main.*

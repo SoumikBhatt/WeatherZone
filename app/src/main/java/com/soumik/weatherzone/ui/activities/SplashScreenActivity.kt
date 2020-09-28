@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import android.content.Intent
 import android.os.Build
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.soumik.weatherzone.R
-import com.soumik.weatherzone.utils.debug
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreenActivity : AppCompatActivity() {

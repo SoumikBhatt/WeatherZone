@@ -22,4 +22,5 @@
     <string name="text_added">Added</string>
     <string name="text_share">Share</string>
     <string name="txt_feedback">Feedback</string>
+    <string name="desc_delete">Delete items</string>
 </resources>

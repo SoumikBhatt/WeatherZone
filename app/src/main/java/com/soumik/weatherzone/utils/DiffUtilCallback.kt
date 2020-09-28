@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.adapters
+package com.soumik.weatherzone.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.soumik.weatherzone.data.models.Cities

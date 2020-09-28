@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.adapters
+package com.soumik.weatherzone.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.Cities
+import com.soumik.weatherzone.utils.DiffUtilCallback
 import kotlinx.android.synthetic.main.item_saved_city.view.*
 
 
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.item_saved_city.view.*
  */
 class SavedCityAdapter:RecyclerView.Adapter<SavedCityAdapter.Holder>() {
 
-    val differ = AsyncListDiffer(this,DiffUtilCallback())
+    val differ = AsyncListDiffer(this, DiffUtilCallback())
     private var onItemClickListener : ((Cities)->Unit)?=null
 
     fun setOnItemClickListener(listener: (Cities)->Unit){
@@ -28,6 +29,8 @@ class SavedCityAdapter:RecyclerView.Adapter<SavedCityAdapter.Holder>() {
         val cityName = itemView.tv_city_name_search!!
         val countryName = itemView.tv_country_name_search!!
         val temperature = itemView.tv_city_temp!!
+        val foregroundView = itemView.view_foreground!!
+        val backgroundView = itemView.view_background!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -51,4 +54,6 @@ class SavedCityAdapter:RecyclerView.Adapter<SavedCityAdapter.Holder>() {
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
+
 }

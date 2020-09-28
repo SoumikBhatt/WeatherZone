@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -18,7 +18,7 @@ import com.soumik.weatherzone.data.models.Cities
 import com.soumik.weatherzone.data.models.CityUpdate
 import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.db.CityDatabase
-import com.soumik.weatherzone.ui.main.adapters.CityAdapter
+import com.soumik.weatherzone.ui.adapters.CityAdapter
 import com.soumik.weatherzone.utils.Status
 import com.soumik.weatherzone.utils.lightStatusBar
 import com.soumik.weatherzone.viewmodel.MyViewModel

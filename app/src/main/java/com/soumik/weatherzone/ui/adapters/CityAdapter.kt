@@ -1,14 +1,13 @@
-package com.soumik.weatherzone.ui.main.adapters
+package com.soumik.weatherzone.ui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.Cities
+import com.soumik.weatherzone.utils.DiffUtilCallback
 import kotlinx.android.synthetic.main.item_cities.view.*
 
 
@@ -25,7 +24,7 @@ class CityAdapter():RecyclerView.Adapter<CityAdapter.Holder>() {
         val addedTV = itemView.tv_added!!
     }
 
-    val differ = AsyncListDiffer(this,DiffUtilCallback())
+    val differ = AsyncListDiffer(this, DiffUtilCallback())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_cities,parent,false))

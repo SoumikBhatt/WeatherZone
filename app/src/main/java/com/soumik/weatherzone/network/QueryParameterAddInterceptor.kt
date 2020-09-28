@@ -1,6 +1,6 @@
 package com.soumik.weatherzone.network
 
-import com.soumik.weatherzone.ui.base.WeatherZone
+import com.soumik.weatherzone.WeatherZone
 import com.soumik.weatherzone.utils.APP_ID
 import com.soumik.weatherzone.utils.PrefManager
 import okhttp3.Interceptor

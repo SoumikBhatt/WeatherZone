@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.adapters
+package com.soumik.weatherzone.ui.adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.Daily
+import com.soumik.weatherzone.utils.DiffUtilCallbackForecast
 import com.soumik.weatherzone.utils.unixTimestampToDateTimeString
 import com.soumik.weatherzone.utils.unixTimestampToTimeString
 import kotlinx.android.synthetic.main.item_forecast.view.*
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.layout_forecast_info.view.*
  */
 class ForecastAdapter():RecyclerView.Adapter<ForecastAdapter.Holder>() {
 
-    val differ = AsyncListDiffer(this,DiffUtilCallbackForecast())
+    val differ = AsyncListDiffer(this, DiffUtilCallbackForecast())
 
     class Holder(itemView:View):RecyclerView.ViewHolder(itemView) {
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".ui.main.activities.ForecastActivity">
+    tools:context=".ui.activities.ForecastActivity">
 
     <include layout="@layout/layout_toolbar"
         android:id="@+id/tool_layout"/>

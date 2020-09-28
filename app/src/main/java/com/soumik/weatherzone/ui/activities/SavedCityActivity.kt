@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -9,17 +9,21 @@ import android.os.Looper
 import android.util.Pair
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.soumik.weatherzone.R
+import com.soumik.weatherzone.data.models.CityUpdate
 import com.soumik.weatherzone.data.repository.local.CityRepository
 import com.soumik.weatherzone.db.CityDatabase
-import com.soumik.weatherzone.ui.main.adapters.SavedCityAdapter
+import com.soumik.weatherzone.ui.adapters.SavedCityAdapter
+import com.soumik.weatherzone.utils.RecyclerItemTouchHelper
 import com.soumik.weatherzone.utils.lightStatusBar
-import com.soumik.weatherzone.utils.showToast
 import com.soumik.weatherzone.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_saved_city.*
 
-class SavedCityActivity : AppCompatActivity() {
+class SavedCityActivity : AppCompatActivity(),RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private lateinit var viewModel : MyViewModel
     private lateinit var repository: CityRepository
@@ -29,7 +33,6 @@ class SavedCityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor=resources.getColor(android.R.color.white)
         lightStatusBar(this,true)
-        window.navigationBarColor=resources.getColor(android.R.color.white)
         setContentView(R.layout.activity_saved_city)
 
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
@@ -53,6 +56,8 @@ class SavedCityActivity : AppCompatActivity() {
             adapter = mAdapter
         }
 
+        ItemTouchHelper(RecyclerItemTouchHelper(this@SavedCityActivity)).attachToRecyclerView(rv_saved_city)
+
         mAdapter.setOnItemClickListener {
             startActivity(Intent(this@SavedCityActivity,WeatherDetailsActivity::class.java).putExtra(WeatherDetailsActivity.CITY_ID,it.id.toString()))
         }
@@ -70,16 +75,27 @@ class SavedCityActivity : AppCompatActivity() {
         finish()
     }
 
-//
-//    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        if (keyCode==KeyEvent.KEYCODE_BACK) {
-//            navigateBack()
-//        }
-//        return super.onKeyDown(keyCode, event)
-//    }
-//
-//    private fun navigateBack() {
-//        startActivity(Intent(this,MainActivity::class.java))
-//        finish()
-//    }
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {
+        if (viewHolder is SavedCityAdapter.Holder) {
+            val pos = viewHolder.adapterPosition
+            val cities = mAdapter.differ.currentList[pos]
+            viewModel.updateSavedCities(CityRepository(CityDatabase(this@SavedCityActivity)),
+                CityUpdate(cities.id,0)
+            )
+
+            Snackbar.make(cl_parent,"City removed from saved items",Snackbar.LENGTH_LONG).apply {
+                setAction("Undo"){
+                    viewModel.updateSavedCities(CityRepository(CityDatabase(this@SavedCityActivity)),
+                        CityUpdate(cities.id,1)
+                    )
+                }
+                setBackgroundTint(resources.getColor(R.color.colorPrimary))
+                setActionTextColor(resources.getColor(R.color.color_grey))
+                show()
+            }
+
+        }
+
+    }
+
 }

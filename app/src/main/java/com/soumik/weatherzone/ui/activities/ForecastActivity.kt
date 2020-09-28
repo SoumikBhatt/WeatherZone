@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
-import com.soumik.weatherzone.ui.main.adapters.ForecastAdapter
+import com.soumik.weatherzone.ui.adapters.ForecastAdapter
 import com.soumik.weatherzone.utils.Status
 import com.soumik.weatherzone.utils.lightStatusBar
 import com.soumik.weatherzone.viewmodel.MyViewModel

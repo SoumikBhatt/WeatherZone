@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.main.activities
+package com.soumik.weatherzone.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,11 +10,8 @@ import com.soumik.weatherzone.R
 import com.soumik.weatherzone.data.models.ResponseWeather
 import com.soumik.weatherzone.data.repository.remote.WeatherRepository
 import com.soumik.weatherzone.utils.Status
-import com.soumik.weatherzone.utils.showToast
 import com.soumik.weatherzone.utils.unixTimestampToTimeString
 import com.soumik.weatherzone.viewmodel.MyViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_weather_details.*
 import kotlinx.android.synthetic.main.activity_weather_details.anim_failed
 import kotlinx.android.synthetic.main.activity_weather_details.anim_network
 import kotlinx.android.synthetic.main.activity_weather_details.inc_info_weather

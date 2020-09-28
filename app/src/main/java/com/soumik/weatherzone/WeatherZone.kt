@@ -1,4 +1,4 @@
-package com.soumik.weatherzone.ui.base
+package com.soumik.weatherzone
 
 import android.app.Application
 import android.content.Context

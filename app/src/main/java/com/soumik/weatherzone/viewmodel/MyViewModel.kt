@@ -161,6 +161,18 @@ class MyViewModel:ViewModel() {
      */
     fun getSavedCities(model: CityRepository,key:Int) =  model.getSavedCities(key)
 
+    /**
+     * Delete City call
+     */
+    fun deleteSavedCities(model: CityRepository,cities: Cities)= viewModelScope.launch {
+        try {
+            model.deleteSavedCities(cities)
+        } catch (e:Exception) {
+            e.stackTrace
+            error(tag,"Error: Deleting City DB: ${e.localizedMessage}")
+        }
+    }
+
 
 
 }

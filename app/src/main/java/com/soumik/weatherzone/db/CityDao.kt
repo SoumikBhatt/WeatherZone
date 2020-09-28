@@ -1,9 +1,7 @@
 package com.soumik.weatherzone.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.soumik.weatherzone.data.models.Cities
 import com.soumik.weatherzone.data.models.CityUpdate
 
@@ -25,4 +23,7 @@ interface CityDao {
 
     @Query("SELECT * FROM city_bd WHERE isSaved= :key")
     fun getSavedCity(key:Int):LiveData<List<Cities>>
+
+    @Delete
+    suspend fun deleteSavedCity(city:Cities)
 }
