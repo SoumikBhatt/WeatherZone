@@ -43,17 +43,22 @@
      <td align="center">Details Weather Info By Location</td>
      <td align="center">7 Days Weather Forecast</td>
      <td align="center">Search Weather By City</td>
-     <td align="center">Save City info</td>
-    <td align="center">Swipe Delete and Undo</td>
     
   </tr>
   <tr>
-    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/weather_by_location.gif" height="400" width="200"></td>
-    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/forecast.gif" height="400" width="200"></td>
-    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/search_by_city.gif" height="400" width="200"></td>
-    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/saved_city.gif" height="400" width="200"></td>
-    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/swipe_delete_undo.gif" height="400" width="200"></td>
+    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/weather_by_location.gif"></td>
+    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/forecast.gif"></td>
+    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/search_by_city.gif"></td>
+  </tr>
   
+  <tr>
+    <td align="center">Save City info</td>
+    <td align="center">Swipe Delete and Undo</td>
+  </tr>
+  
+  <tr>
+    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/saved_city.gif"></td>
+    <td valign="top"><img src="https://github.com/SoumikBhatt/WeatherZone/blob/soumik/screenshots/swipe_delete_undo.gif"></td>
   </tr>
  </table>
  <br>
