@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         android:visibility="gone"
-        app:lottie_loop="true"/>
+        app:lottie_loop="false"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anim_failed"
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="false"/>
 
     <include
         android:id="@+id/inc_info_weather"
