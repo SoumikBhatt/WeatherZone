@@ -5,6 +5,19 @@
 <h3 style="margin-top: 0;" align="center">Weather App using MVVM</h3>
 </p>
 
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SoumikBhatt/WeatherZone.svg">
+
+  <img alt="GitHub top language" src="https://img.shields.io/github/repo-size/SoumikBhatt/WeatherZone.svg">
+
+  <a href="https://api.codacy.com/project/badge/Grade/851ed4a93f6e4e7fae221dc6a2e48e1e" target="_blank">
+    <img alt="Codacy Badge" src="https://img.shields.io/codacy/grade/851ed4a93f6e4e7fae221dc6a2e48e1e">
+  </a>
+
+  <img alt="GitHub top language" src="https://img.shields.io/github/last-commit/SoumikBhatt/WeatherZone.svg">
+</p>
+
+
 
 ## Feature
 
