@@ -1,6 +1,7 @@
 package com.soumik.weatherzone.db
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -19,7 +20,7 @@ import com.soumik.weatherzone.utils.DB_NAME
 
 @Database(
     entities =[Cities::class],
-    version = 2
+    version = 1
 )
 abstract class CityDatabase:RoomDatabase() {
 
@@ -27,10 +28,14 @@ abstract class CityDatabase:RoomDatabase() {
 
     companion object{
 
+        private const val TAG = "CityDatabase"
+
         private val MIGRATION_1_2 = object : Migration(1,2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 //do update query here,
                 // works like onUpgrade method of SQLite
+
+                Log.d(TAG, "migrate: I am here")
 
                 //adding save table
                 database.execSQL("ALTER TABLE city_bd ADD COLUMN isSaved INTEGER DEFAULT NULL")
@@ -46,9 +51,18 @@ abstract class CityDatabase:RoomDatabase() {
             instance?:createDatabase(context).also{ instance=it}
         }
 
-        private fun createDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,CityDatabase::class.java, DB_NAME)
+        private fun createDatabase(context: Context) = Room
+            .databaseBuilder(context.applicationContext,CityDatabase::class.java, DB_NAME)
             .createFromAsset(DB_NAME)
-            .addMigrations(MIGRATION_1_2)
+//            .addCallback(object : Callback(){
+//                override fun onCreate(db: SupportSQLiteDatabase) {
+//                    super.onCreate(db)
+//                    Log.d(TAG, "onCreate: I am here")
+//                    db.execSQL("ALTER TABLE city_bd ADD COLUMN isSaved INTEGER DEFAULT NULL")
+//
+//                }
+//            })
+//            .addMigrations(MIGRATION_1_2)
             .build()
     }
 }
