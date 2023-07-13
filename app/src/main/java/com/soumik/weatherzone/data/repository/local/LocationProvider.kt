@@ -7,9 +7,9 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.soumik.weatherzone.data.models.LocationData
 import com.soumik.weatherzone.utils.RequestCompleteListener
-
 
 /**
  * Created by Soumik Bhattacharjee on 9/11/2020.
@@ -20,23 +20,24 @@ class LocationProvider(context: Context): LocationProviderInterface {
 
     private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
 
+    private  var callbacks :RequestCompleteListener<LocationData>?=null
     @SuppressLint("MissingPermission")
     override fun getUserCurrentLocation(callback: RequestCompleteListener<LocationData>) {
         fusedLocationClient.lastLocation.addOnSuccessListener {
-            it.also { callback.onRequestCompleted(setLocationData(it)) }
+            callbacks = callback
+            it?.also { callback.onRequestCompleted(setLocationData(it)) }
         } .addOnFailureListener {
             callback.onRequestFailed(it.localizedMessage)
         }
+
 
         startLocationUpdates()
     }
 
     private val locationCallback = object : LocationCallback() {
-        override fun onLocationResult(locationResult: LocationResult?) {
-            locationResult ?: return
-            for (location in locationResult.locations) {
-                setLocationData(location)
-            }
+        override fun onLocationResult(locationResult: LocationResult) {
+            if(locationResult.locations.isEmpty()) return
+            callbacks?.onRequestCompleted(setLocationData(locationResult.locations[0]))
         }
     }
 
@@ -54,10 +55,10 @@ class LocationProvider(context: Context): LocationProviderInterface {
     }
 
     companion object {
-        val locationRequest: LocationRequest = LocationRequest.create().apply {
-            interval = 10000
-            fastestInterval = 5000
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        }
+        val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000)
+            .setWaitForAccurateLocation(false)
+            .setMinUpdateIntervalMillis(5000)
+            .setMaxUpdateDelayMillis(10000)
+            .build()
     }
 }
